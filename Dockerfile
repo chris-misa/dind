@@ -16,7 +16,12 @@ RUN curl -sSL https://get.docker.com/ | sh
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
-# Add script to install 'native' tools (just iputils for now)
+# Copy in some config files for docker and ndppd
+RUN mkdir -p /etc/docker
+COPY ./config/daemon.json /etc/docker/daemon.json
+COPY ./config/ndppd.conf /etc/ndppd.conf
+
+# Add script to set up container for testing
 COPY ./setupHost.sh /local/repository/setupHost.sh
 RUN /local/repository/setupHost.sh
 
