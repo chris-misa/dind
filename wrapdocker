@@ -86,6 +86,9 @@ popd >/dev/null
 # delete it so that docker can start.
 rm -rf /var/run/docker.pid
 
+# Start ndppd for ipv6 support between eth0 and docker0 ifaces
+ndppd &
+
 # If we were given a PORT environment variable, start as a simple daemon;
 # otherwise, spawn a shell as well
 if [ "$PORT" ]

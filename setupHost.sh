@@ -12,4 +12,3 @@ git clone https://github.com/iputils/iputils.git
 pushd iputils
 make
 popd
-
